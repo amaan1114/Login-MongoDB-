@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignIn Page</title>
+    
+     <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="/resources/style.css">
+    <!-- Link to jQuery (CDN) -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+</head>
+<body>
+
+<div class="container d-flex justify-content-center align-items-center" style="width: 100vw; height: 100vh;">
+    <div class="card align-items-center align-content-center justify-content-center rounded-5 shadow" style="width: 20rem; height: 60%;">
+
+    <div class="card-body">
+        <p style="color: red; text-align: center; <%= hidePara ? 'display: none;' : '' %>" id="WarningPara'" class="card-title">Email or Password is incorrect</p>
+        <h1 class="card-title text-center fw-bold">SIGN IN</h1>
+        <hr>
+        <form action="SignIn" method="post">
+            <input type="email" name="email" class="inputstyling m-3" placeholder="Enter email id" required>
+             <div class="d-flex justify-content-center align-items-center"><input type="password" name="password" class="inputstyling m-3" id="pass" placeholder="Enter password" required><i class="bi bi-eye" id="togglePassword" style="height: fit-content;"></i></div> 
+              <div class="row m-4">
+                <div class="col-6">
+                    <button type="button" class="btn btn-primary " onclick="document.getElementById('hiddenForm').submit();">Sign Up</button>
+                </div>
+                
+                <div class="col-6">
+                        <button type="submit" class="btn btn-primary ">Sign In</button>
+                </div>
+              </div>
+              
+          
+        </form>
+
+
+         <!--Change to sing up form sign in-->
+        <form action="/toSignUp" method="POST" style="display: none;" id="hiddenForm">
+          <input type="hidden" name="key" value="value">
+        </form>
+
+    </div>
+    </div>
+</div>
+   
+    
+      <!-- Link to your custom script -->
+    <script src="/resources/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+body {
+  background-color: #EAE6E1;
+  font-family: cursive,sans-serif;
+}
+.inputstyling{
+  border: none;
+  outline: none;
+  border-bottom: 2px solid black;
+}

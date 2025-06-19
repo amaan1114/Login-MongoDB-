@@ -49,6 +49,8 @@ $('#SignUp').click(function(){
         trigger: 'manual'
     });
 
+    if($('#SignUpForm')[0].checkValidity()){
+
     
     if(validatePassword($('#pass').val())==="Valid"){
 
@@ -59,7 +61,9 @@ $('#SignUp').click(function(){
         popover.show()
         setTimeout(() => popover.hide(), 3000); 
     }
-  
+}else{
+    $('#SignUpForm')[0].reportValidity()
+}
 
 })
 $(document).ready(function () {

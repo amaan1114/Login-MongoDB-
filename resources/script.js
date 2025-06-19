@@ -36,10 +36,28 @@ function validatePassword(password) {
 
 
 $('#SignUp').click(function(){
+    
+    var passwordInput = $('#pass')
+    var popover = new bootstrap.Popover(passwordInput);
+    passwordInput.attr('data-bs-content', validatePassword($('#pass').val()));
+    var existingPopover = bootstrap.Popover.getInstance(passwordInput[0]);
+    if (existingPopover) {
+        existingPopover.dispose();
+    }
+
+     var popover = new bootstrap.Popover(passwordInput[0], {
+        trigger: 'manual'
+    });
+
+    
     if(validatePassword($('#pass').val())==="Valid"){
+
+        popover.hide()
         $('#SignUpForm').submit()
     }else{
-        alert(validatePassword($('#pass').val()))
+        
+        popover.show()
+        setTimeout(() => popover.hide(), 3000); 
     }
   
 

@@ -1,9 +1,11 @@
 body {
   background-color: #EAE6E1;
-  font-family: cursive,sans-serif;
+  font-family: "Roboto",sans-serif;
+ 
 }
 .inputstyling{
   border: none;
   outline: none;
   border-bottom: 2px solid black;
+  background:none
 }

@@ -12,20 +12,25 @@
     <!-- Link to jQuery (CDN) -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
+
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
 <div class="container d-flex justify-content-center align-items-center" style="width: 100vw; height: 100vh;">
-    <div class="card align-items-center align-content-center justify-content-center rounded-5 shadow" style="width: 20rem; height: 60%;">
+    <div class="card align-items-center align-content-center justify-content-center rounded-5 shadow" style="width: 20rem; height: 50%;">
 
-    <div class="card-body">
+    <div class="card-body d-flex flex-column justify-content-center align-items-center text-center">
         <p style="color: red; text-align: center; <%= hidePara ? 'display: none;' : '' %>" id="WarningPara'" class="card-title">Email or Password is incorrect</p>
-        <h1 class="card-title text-center fw-bold">SIGN IN</h1>
-        <hr>
+        <h1 class="card-title text-center fw-bold" style="border-bottom: 1px solid rgba(146, 145, 145, 0.266); width: 100%;padding-bottom: 0.3rem">SIGN IN</h1>
+    
         <form action="SignIn" method="post">
-            <input type="email" name="email" class="inputstyling m-3" placeholder="Enter email id" required>
-             <div class="d-flex justify-content-center align-items-center"><input type="password" name="password" class="inputstyling m-3" id="pass" placeholder="Enter password" required><i class="bi bi-eye" id="togglePassword" style="height: fit-content;"></i></div> 
-              <div class="row m-4">
+            <input type="email" name="email" class="inputstyling m-3 mt-5" placeholder="Enter email id"  style="width: 80%;" required>
+             <input type="password" name="password" class="inputstyling m-3 mt-4" id="pass" placeholder="Enter password" style="width:75%;"  required><i class="bi bi-eye" id="togglePassword" style="height: fit-content; display: inline"></i> <div class="row m-4">
                 <div class="col-6">
                     <button type="button" class="btn btn-primary " onclick="document.getElementById('hiddenForm').submit();">Sign Up</button>
                 </div>

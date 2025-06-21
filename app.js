@@ -88,7 +88,7 @@ app.post('/SignUp',async function(req,res){
 app.get('/info',async function(req, res) {
     hidepara=true
     try {
-        const user = await people.findOne({email:req.query.id});
+        const user = await people.findOne({ _id: req.query.id });
         res.render('Info', { name: user});
     } catch (err) {
         res.status(500).send('User not found');
@@ -109,7 +109,7 @@ app.post('/SignIn',async function(req,res){
     const user = await people.findOne({email:email}) 
     if(user){
         if(password === user.Password  ){
-        res.redirect(`/info?id=${user.email.toLowerCase()}`)
+            res.redirect(`/info?id=${user.id}`)
         }else{
             hidepara=false
             res.redirect('/SignIn')

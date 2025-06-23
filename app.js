@@ -12,7 +12,17 @@ const port = process.env.PORT || 8080;
 const encrypt = require('mongoose-encryption')
 app.set("view engine","ejs")
 app.use(express.urlencoded({extended:true}))
+const session = require('express-session');
 
+app.use(session({
+    secret: 'yoursupersecretkey', // Use environment variable in production
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: false, // set true if using HTTPS
+        maxAge: null // session cookie expires when browser closes
+    }
+}));
 
 
 mongoose.connect(process.env.MONGO_URI)
@@ -87,8 +97,12 @@ app.post('/SignUp',async function(req,res){
 //Seting Up info
 app.get('/info',async function(req, res) {
     hidepara=true
+    if(!req.session.userId){
+        return res.redirect('/SignIn');
+
+    }
     try {
-        const user = await people.findOne({ _id: req.query.id });
+        const user = await people.findById(req.session.userId);
         res.render('Info', { name: user});
     } catch (err) {
         res.status(500).send('User not found');
@@ -109,6 +123,7 @@ app.post('/SignIn',async function(req,res){
     const user = await people.findOne({email:email}) 
     if(user){
         if(password === user.Password  ){
+            req.session.userId = user._id;
             res.redirect(`/info?id=${user.id}`)
         }else{
             hidepara=false
